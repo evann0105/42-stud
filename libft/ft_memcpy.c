@@ -6,17 +6,17 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 12:15:31 by emgret            #+#    #+#             */
-/*   Updated: 2024/09/29 18:27:53 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/02 08:32:27 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t i;
-	unsigned char *ptr;
-	const unsigned char *ptr2;
+	size_t				i;
+	unsigned char		*ptr;
+	const unsigned char	*ptr2;
 
 	ptr = (unsigned char *)dst;
 	ptr2 = (const unsigned char *)src;
@@ -30,13 +30,21 @@ void *ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 }
 
 /* #include <stdio.h>
+#include <string.h>
 int main(void)
 {
 	char dst[] = "hello";
-	const char src[] = "ahhhhhhh";
+	const char src[] = "ahh";
+
+	char dst2[] = "hello";
+	const char src2[] = "ahh";
 	
 	ft_memcpy(dst, src, 6);
 	printf("%s\n", dst);
-	printf("%lu", sizeof(dst));
+	printf("%lu\n", sizeof(dst));
+	printf("-----------\n");
+	memcpy(dst2, src2, 6);
+	printf("%s\n", dst2);
+	printf("%lu\n", sizeof(dst2));
 	return (0);
 } */

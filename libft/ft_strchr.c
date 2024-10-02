@@ -1,48 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 18:31:45 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/02 08:31:17 by emgret           ###   ########.fr       */
+/*   Created: 2024/10/02 09:44:12 by emgret            #+#    #+#             */
+/*   Updated: 2024/10/02 11:32:33 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t			i;
-	unsigned char	*ptr;
-	unsigned char	*ptr2;
+	int		i;
+	char	*ptr;
 
-	ptr = (unsigned char *)dst;
-	ptr2 = (unsigned char *)src;
 	i = 0;
-	while (i < len && ptr[i] != '\0')
+	ptr = (char *)s;
+	while (ptr[i] != '\0')
 	{
-		ptr[i] = ptr2[i];
+		if (ptr[i] == (char)c)
+			return (&ptr[i]);
 		i++;
 	}
-	return (dst);
+	if (c == '\0')
+		return (&ptr[i]);
+	return (NULL);
 }
 
 /* #include <stdio.h>
 #include <string.h>
 int	main(void)
 {
-	char dst[] = "hello world !";
-	char src[] = "hello warld !";
+	char	s[] = "hello world";
+	int	c = 'i';
+	char *ptr;
 
-	char dst2[] = "hello world !";
-	char src2[] = "hello world !";
-	
-	ft_memmove(dst, src, 10);
-	printf("%s\n", dst);
-	printf("----------------\n");
-	memmove(dst2, src2, 10);
-	printf("%s\n", dst2);
+	char	s2[] = "hello world";
+	int c2 = 'i';
+	char *ptr2;
+	ptr = strchr(s, c);
+	printf("le premier caractere %c dans %s est %s\n", c, s, ptr);
+	printf("----------------------------\n");
+	ptr2 = ft_strchr(s2, c2);
+	printf("le premier caractere %c dans %s est %s\n", c2, s2, ptr2);
 	return (0);
 } */

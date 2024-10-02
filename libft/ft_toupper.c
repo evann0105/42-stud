@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 20:21:20 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/01 11:07:00 by emgret           ###   ########.fr       */
+/*   Created: 2024/10/01 19:26:43 by emgret            #+#    #+#             */
+/*   Updated: 2024/10/02 09:35:12 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+#include "libft.h"
+
+int	ft_toupper(int c)
 {
-	if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
-		return (0);
-	else
-		return (1);
+	if (c == -1)
+		return (-1);
+	if (c >= 'a' && c <= 'z')
+		return (c -= 32);
+	return (c);
 }
 
 /* #include <stdio.h>
@@ -23,11 +26,12 @@ int	ft_isalpha(int c)
 
 int main(void)
 {
-	int c = 'A';
-	int result1 = ft_isalpha(c);
-	int result2 = isalpha(c);
+	int c = '9';
+	
+	int result1 = toupper(c);
+	int result2 = ft_toupper(c);
 
-	printf("%d\n", result1);
-	printf("---------------\n");
-	printf("%d\n", result2);
+	printf("%d -> %c : %c\n", result1, c, toupper(c));
+	printf("----------------\n");
+	printf("%d -> %c : %c\n", result2, c, ft_toupper(c));
 } */
