@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 07:30:50 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/02 08:33:38 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/02 14:09:31 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,21 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 
 	i = 0;
-	while (i < dstsize && dst[i] != '\0')
+	if (dstsize == 0)
+	{
+		i = 0;
+		while (src[i] != '\0')
+		{
+			i++;
+		}
+		return (i);
+	}
+	while (i < dstsize - 1 && src[i] != '\0')
 	{
 		dst[i] = src[i];
 		i++;
 	}
+	dst[i] = '\0';
 	while (src[i] != '\0')
 	{
 		i++;

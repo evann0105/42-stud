@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 12:15:31 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/02 08:32:27 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/02 14:26:40 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	ptr = (unsigned char *)dst;
 	ptr2 = (const unsigned char *)src;
+	if (dst == NULL && src == NULL)
+		return (NULL);
 	i = 0;
-	while (i < n && ptr[i] != '\0')
+	while (i < n)
 	{
 		ptr[i] = ptr2[i];
 		i++;

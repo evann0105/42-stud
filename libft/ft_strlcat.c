@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 11:27:31 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/02 08:30:20 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/02 13:52:53 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		src_len++;
 	if (dst_len >= dstsize)
 		return (dstsize + src_len);
-
 	i = dst_len;
 	j = 0;
 	while (src[j] != '\0' && i < dstsize - 1)
@@ -37,7 +36,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		j++;
 	}
 	dst[i] = '\0';
-
 	return (dst_len + src_len);
 }
 

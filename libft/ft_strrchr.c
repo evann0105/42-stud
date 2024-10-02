@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:21:55 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/02 12:51:23 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/02 14:11:29 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ char	*ft_strrchr(const char *s, int c)
 	ptr = (char *)s;
 	while (ptr[i] != '\0')
 		i++;
-	while (i > 0)
-	{
-		if (ptr[i] == (char)c)
-			return (&ptr[i]);
-		i--;
-	}
 	if (c == '\0')
 		return (&ptr[i]);
+	while (i > 0)
+	{
+		i--;
+		if (ptr[i] == (char)c)
+			return (&ptr[i]);
+	}
 	return (NULL);
 }
 
