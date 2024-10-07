@@ -1,45 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 12:53:10 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/03 09:58:17 by emgret           ###   ########.fr       */
+/*   Created: 2024/10/04 09:18:55 by emgret            #+#    #+#             */
+/*   Updated: 2024/10/04 09:50:59 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
+	int	i;
+	int	result;
+	int	sign;
 
 	i = 0;
-	while (i < n)
+	result = 0;
+	sign = 1;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f'
+		|| str[i] == '\r' || str[i] == ' ')
+		i++;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
 	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		if (s1[i] == '\0' || s2[i] == '\0')
-			break ;
+		sign *= -1;
 		i++;
 	}
-	return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }
 
 /* #include <stdio.h>
-#include <string.h>
 
 int	main(void)
 {
-	int result;
-	int result2;
+	char str[] = "+23233HE";
+	int result = ft_atoi(str);
 
-	result = strncmp("apple", "apale", 3);
-	result2 = ft_strncmp("apple", "apale", 3);
-	printf("%d\n", result);
-	printf("-------------\n");
-	printf("%d\n", result2);
-	return (0);
+	printf("%d", result);
 } */

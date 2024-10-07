@@ -1,45 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 12:53:10 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/03 09:58:17 by emgret           ###   ########.fr       */
+/*   Created: 2024/10/04 11:36:28 by emgret            #+#    #+#             */
+/*   Updated: 2024/10/04 15:15:05 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_strdup(const char *s)
 {
-	size_t	i;
+	int		i;
+	char	*rtn;
 
 	i = 0;
-	while (i < n)
+	rtn = malloc(sizeof(char) * ft_strlen((char *)s) + 1);
+	if (rtn == NULL)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		if (s1[i] == '\0' || s2[i] == '\0')
-			break ;
+		rtn[i] = (char)s[i];
 		i++;
 	}
-	return (0);
+	rtn[i] = '\0';
+	return (rtn);
 }
 
 /* #include <stdio.h>
-#include <string.h>
-
 int	main(void)
 {
-	int result;
-	int result2;
+	char	*s;
+	char	*cpy;
 
-	result = strncmp("apple", "apale", 3);
-	result2 = ft_strncmp("apple", "apale", 3);
-	printf("%d\n", result);
-	printf("-------------\n");
-	printf("%d\n", result2);
+	s = "hello world";
+	cpy = ft_strdup(s);
+	printf("%s\n", cpy);
+	free (cpy);
 	return (0);
 } */

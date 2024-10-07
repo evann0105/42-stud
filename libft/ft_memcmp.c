@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 12:53:10 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/03 09:58:17 by emgret           ###   ########.fr       */
+/*   Created: 2024/10/03 10:37:19 by emgret            #+#    #+#             */
+/*   Updated: 2024/10/03 11:18:00 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*ptr;
+	unsigned char	*ptr2;
 
 	i = 0;
+	ptr = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
 	while (i < n)
 	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		if (s1[i] == '\0' || s2[i] == '\0')
-			break ;
+		if (ptr[i] != ptr2[i])
+			return ((unsigned char)ptr[i] - (unsigned char)ptr2[i]);
 		i++;
 	}
 	return (0);
@@ -33,13 +35,16 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 int	main(void)
 {
-	int result;
-	int result2;
+	char s1[] = "apple";
+	char s2[] = "apale";
 
-	result = strncmp("apple", "apale", 3);
-	result2 = ft_strncmp("apple", "apale", 3);
+	char s3[] = "apple";
+	char s4[] = "apale";
+	
+	int result = memcmp(s1, s2, 5);
+	int result2 = ft_memcmp(s3, s4, 5);
 	printf("%d\n", result);
-	printf("-------------\n");
+	printf("------------\n");
 	printf("%d\n", result2);
 	return (0);
 } */

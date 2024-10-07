@@ -6,7 +6,7 @@
 #    By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 00:06:44 by emgret            #+#    #+#              #
-#    Updated: 2024/10/02 13:20:19 by emgret           ###   ########.fr        #
+#    Updated: 2024/10/04 14:52:02 by emgret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,13 @@ SRC = 	ft_strlen.c \
 		ft_tolower.c \
 		ft_strchr.c \
 		ft_strrchr.c \
-		ft_strncmp.c
+		ft_strncmp.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_strnstr.c \
+		ft_atoi.c \
+		ft_calloc.c \
+		ft_strdup.c
 
 OBJ = $(SRC:.c=.o)
 

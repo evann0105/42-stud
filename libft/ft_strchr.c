@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 09:44:12 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/02 11:32:33 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/03 11:28:43 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strchr(const char *s, int c)
 			return (&ptr[i]);
 		i++;
 	}
-	if (c == '\0')
+	if ((char)c == '\0')
 		return (&ptr[i]);
 	return (NULL);
 }
