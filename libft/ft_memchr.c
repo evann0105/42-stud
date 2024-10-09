@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 09:23:23 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/03 10:13:02 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/09 09:39:28 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return (&ptr[i]);
 		i++;
 	}
-	if (c == '\0')
-		return (&ptr[i]);
 	return (NULL);
 }
 
