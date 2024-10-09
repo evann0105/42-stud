@@ -6,11 +6,11 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:02:56 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/02 08:33:53 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/07 14:33:27 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *s)
+int	ft_strlen(const char *s)
 {
 	int	i;
 

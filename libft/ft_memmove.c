@@ -6,42 +6,49 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 18:31:45 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/04 15:30:33 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/07 17:44:17 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include <stddef.h>
+void	copy_reverse(unsigned char *dst, const unsigned char *src, size_t len)
+{
+	size_t	i;
+
+	i = len;
+	while (i > 0)
+	{
+		i--;
+		dst[i] = src[i];
+	}
+}
+
+void	copy_forward(unsigned char *dst, const unsigned char *src, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+}
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char		*ptr;
 	const unsigned char	*ptr2;
-	size_t				i;
 
 	ptr = (unsigned char *)dst;
 	ptr2 = (const unsigned char *)src;
 	if (!dst && !src)
 		return (NULL);
 	if (ptr2 < ptr)
-	{
-		i = len;
-		while (i > 0)
-		{
-			i--;
-			ptr[i] = ptr2[i];
-		}
-	}
+		copy_reverse(ptr, ptr2, len);
 	else
-	{
-		i = 0;
-		while (i < len)
-		{
-			ptr[i] = ptr2[i];
-			i++;
-		}
-	}
+		copy_forward(ptr, ptr2, len);
 	return (dst);
 }
 

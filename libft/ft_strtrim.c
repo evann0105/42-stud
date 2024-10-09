@@ -6,45 +6,35 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 12:14:03 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/07 13:52:05 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/07 14:40:55 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	char_in_set(char c, const char *set)
-{
-	int	j;
-
-	j = 0;
-	while (set[j] != '\0')
-	{
-		if (c == set[j])
-			return (1);
-		j++;
-	}
-	return (0);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	int		ptr_index;
+	int		start;
+	int		end;
 	char	*ptr;
+	char	*rtn;
 
-	i = 0;
-	ptr_index = 0;
-	ptr = malloc(sizeof(char) * (strlen(s1) + 1));
-	if (ptr == NULL)
+	if (!s1 || !set)
 		return (NULL);
-	while (s1[i] != '\0')
-	{
-		if (!char_in_set(s1[i], set))
-			ptr[ptr_index++] = s1[i];
-		i++;
-	}
-	ptr[ptr_index] = '\0';
-	return (ptr);
+	start = 0;
+	end = ft_strlen((char *)s1) - 1;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (end >= start && ft_strchr(set, s1[end]))
+		end--;
+	rtn = malloc(sizeof(char) * (end - start + 2));
+	if (!rtn)
+		return (NULL);
+	ptr = rtn;
+	while (start <= end)
+		*ptr++ = s1[start++];
+	*ptr = '\0';
+	return (rtn);
 }
 
 /* #include <stdio.h>

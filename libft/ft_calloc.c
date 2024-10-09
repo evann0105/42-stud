@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 10:08:11 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/04 11:34:47 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/07 18:03:37 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	int	*arr;
-	int	i;
+	void	*arr;
 
-	i = 0;
-	arr = malloc(count * size);
-	if (arr == 0)
-		return (NULL);
-	while (arr[i] != '\0')
+	if (count == 0 || size == 0)
 	{
-		arr[i] = 0;
-		i++;
+		size = 1;
+		count = size;
 	}
+	arr = malloc(count * size);
+	if (!arr)
+		return (NULL);
+	ft_bzero(arr, count * size);
 	return (arr);
 }
 
