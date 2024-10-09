@@ -1,44 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 11:36:28 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/09 11:47:08 by emgret           ###   ########.fr       */
+/*   Created: 2024/10/09 12:57:10 by emgret            #+#    #+#             */
+/*   Updated: 2024/10/09 13:47:48 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		i;
-	char	*rtn;
+	int		sign;
+	char	c;
 
-	i = 0;
-	rtn = malloc(sizeof(char) * ft_strlen((char *)s) + 1);
-	if (rtn == NULL)
-		return (NULL);
-	while (s[i])
+	sign = 1;
+	if (n == -2147483647)
 	{
-		rtn[i] = (char)s[i];
-		i++;
+		write(fd, "-2147483647", 11);
+		return ;
 	}
-	rtn[i] = '\0';
-	return (rtn);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		sign = -1;
+	}
+	if (n / 10)
+		ft_putnbr_fd(n / 10 * sign, fd);
+	c = '0' + n % 10 * sign;
+	ft_putchar_fd(c, fd);
 }
-
-/* #include <stdio.h>
-int	main(void)
-{
-	char	*s;
-	char	*cpy;
-
-	s = "hello world";
-	cpy = ft_strdup(s);
-	printf("%s\n", cpy);
-	free (cpy);
-	return (0);
-} */

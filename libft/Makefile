@@ -6,7 +6,7 @@
 #    By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 00:06:44 by emgret            #+#    #+#              #
-#    Updated: 2024/10/09 10:16:02 by emgret           ###   ########.fr        #
+#    Updated: 2024/10/09 13:01:36 by emgret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,13 @@ SRC = 	ft_strlen.c \
 		ft_strjoin.c \
 		ft_strtrim.c \
 		ft_split.c \
-		ft_itoa.c
+		ft_itoa.c \
+		ft_strmapi.c \
+		ft_striteri.c \
+		ft_putchar_fd.c \
+		ft_putstr_fd.c \
+		ft_putendl_fd.c \
+		ft_putnbr_fd.c
 
 OBJ = $(SRC:.c=.o)
 

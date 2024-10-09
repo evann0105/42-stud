@@ -6,80 +6,84 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:54:19 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/08 15:46:46 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/09 14:11:14 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_words(char const *s, char c)
+static size_t	ft_toklen(const char *s, char c)
 {
-	size_t	words;
-	size_t	i;
+	size_t	ret;
 
-	words = 0;
-	i = 0;
-	while (s[i])
+	ret = 0;
+	while (*s)
 	{
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
-			words++;
-		i++;
-	}
-	return (words);
-}
-
-static void	fill_tab(char *new, char const *s, char c)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] && s[i] != c)
-	{
-		new[i] = s[i];
-		i++;
-	}
-	new[i] = '\0';
-}
-
-static void	set_mem(char **tab, char const *s, char c)
-{
-	size_t	count;
-	size_t	index;
-	size_t	i;
-
-	index = 0;
-	i = 0;
-	while (s[index])
-	{
-		count = 0;
-		while (s[index + count] && s[index + count] != c)
-			count++;
-		if (count > 0)
+		if (*s != c)
 		{
-			tab[i] = malloc(sizeof(char) * (count + 1));
-			if (!tab[i])
-				return ;
-			fill_tab(tab[i], (s + index), c);
-			i++;
-			index = index + count;
+			++ret;
+			while (*s && *s != c)
+				++s;
 		}
 		else
-			index++;
+			++s;
 	}
-	tab[i] = 0;
+	return (ret);
 }
 
-char	**ft_split(char const *s, char c)
+static void	free_ret(char **ret, size_t index)
 {
-	size_t	words;
-	char	**tab;
+	size_t	i;
 
-	words = count_words(s, c);
-	tab = malloc(sizeof(char *) * (words + 1));
-	if (!tab)
+	i = 0;
+	while (i < index)
+	{
+		free(ret[i]);
+		i++;
+	}
+	free(ret);
+}
+
+static int	add_word(char **ret, const char **s, size_t *i, char c)
+{
+	size_t	len;
+
+	len = 0;
+	while (**s && **s != c && ++len)
+		++(*s);
+	ret[*i] = ft_substr(*s - len, 0, len);
+	if (!ret[*i])
+		return (0);
+	(*i)++;
+	return (1);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**ret;
+	size_t	i;
+
+	i = 0;
+	if (!s)
 		return (NULL);
-	set_mem(tab, s, c);
-	return (tab);
+	ret = malloc(sizeof(char *) * (ft_toklen(s, c) + 1));
+	if (!ret)
+		return (NULL);
+	while (*s)
+	{
+		if (*s != c)
+		{
+			if (!add_word(ret, &s, &i, c))
+			{
+				free_ret(ret, i);
+				return (NULL);
+			}
+		}
+		else
+			++s;
+	}
+	ret[i] = NULL;
+	return (ret);
 }
 
 /* #include <stdio.h>

@@ -1,44 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 11:36:28 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/09 11:47:08 by emgret           ###   ########.fr       */
+/*   Created: 2024/10/09 11:31:07 by emgret            #+#    #+#             */
+/*   Updated: 2024/10/09 12:02:55 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		i;
-	char	*rtn;
+	char			*str;
+	int				len;
+	unsigned int	i;
 
-	i = 0;
-	rtn = malloc(sizeof(char) * ft_strlen((char *)s) + 1);
-	if (rtn == NULL)
+	if (!s)
 		return (NULL);
+	len = ft_strlen(s);
+	str = malloc((len + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	i = 0;
 	while (s[i])
 	{
-		rtn[i] = (char)s[i];
+		str[i] = (*f)(i, s[i]);
 		i++;
 	}
-	rtn[i] = '\0';
-	return (rtn);
+	str[i] = '\0';
+	return (str);
 }
-
-/* #include <stdio.h>
-int	main(void)
-{
-	char	*s;
-	char	*cpy;
-
-	s = "hello world";
-	cpy = ft_strdup(s);
-	printf("%s\n", cpy);
-	free (cpy);
-	return (0);
-} */

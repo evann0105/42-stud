@@ -1,44 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 11:36:28 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/09 11:47:08 by emgret           ###   ########.fr       */
+/*   Created: 2024/10/09 12:42:13 by emgret            #+#    #+#             */
+/*   Updated: 2024/10/09 12:50:25 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	ft_putendl_fd(char *s, int fd)
 {
-	int		i;
-	char	*rtn;
-
-	i = 0;
-	rtn = malloc(sizeof(char) * ft_strlen((char *)s) + 1);
-	if (rtn == NULL)
-		return (NULL);
-	while (s[i])
-	{
-		rtn[i] = (char)s[i];
-		i++;
-	}
-	rtn[i] = '\0';
-	return (rtn);
+	if (!s)
+		return ;
+	ft_putstr_fd(s, fd);
+	write(fd, "\n", 1);
 }
 
-/* #include <stdio.h>
-int	main(void)
+/* int	main(void)
 {
-	char	*s;
-	char	*cpy;
-
-	s = "hello world";
-	cpy = ft_strdup(s);
-	printf("%s\n", cpy);
-	free (cpy);
+	ft_putendl_fd("hello world!", 1);
 	return (0);
 } */

@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 10:08:11 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/07 18:03:37 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/09 12:54:09 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*arr;
 
-	if (count == 0 || size == 0)
-	{
-		size = 1;
-		count = size;
-	}
 	arr = malloc(count * size);
 	if (!arr)
 		return (NULL);
