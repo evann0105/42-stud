@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:44:29 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/09 10:49:16 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/09 19:44:57 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_itoa(int n)
 
 	len = ft_len(n);
 	s = (char *)malloc(sizeof(char) * (len + 1));
-	if (!(s))
+	if (!s)
 		return (NULL);
 	s[len--] = '\0';
 	if (n == 0)

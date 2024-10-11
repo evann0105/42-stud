@@ -6,7 +6,7 @@
 #    By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 00:06:44 by emgret            #+#    #+#              #
-#    Updated: 2024/10/09 13:01:36 by emgret           ###   ########.fr        #
+#    Updated: 2024/10/10 14:54:33 by emgret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,21 @@ SRC = 	ft_strlen.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c
 
+
 OBJ = $(SRC:.c=.o)
+
+BONUS = ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c
+
+
+BONUS_OBJ = $(BONUS:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
@@ -61,12 +75,15 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+bonus:	$(OBJS) $(BONUS_OBJ)
+	ar rcs $(NAME) $(OBJS) $(BONUS_OBJ)
+
+.PHONY: all clean fclean re bonus
 
