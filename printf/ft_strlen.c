@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/13 17:51:57 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/13 17:52:35 by emgret           ###   ########.fr       */
+/*   Created: 2024/10/18 10:05:33 by emgret            #+#    #+#             */
+/*   Updated: 2024/10/18 10:06:52 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_printf.h"
 
-int	main(void)
+size_t	ft_strlen(const char *str)
 {
-	printf("this is a test\n");
-	return (0);
+	size_t	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (*str)
+		i++;
+	return (i);
 }
