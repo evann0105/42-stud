@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:25:11 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/21 17:03:46 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/23 11:12:35 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,10 @@ int	main(void)
 	ft_printf("---------------------\n");
 	printf("%s", "some string with %s hehe\n");
 	ft_printf("%s", "some string with %s hehe\n");
+	ft_printf("---------------------\n");
+	ft_printf(" %s ", "-");
+	ft_printf(" %s %s ", "", "-");
+	ft_printf(" %s %s ", " - ", "");
+	ft_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
 	return (0);
-} */
-
+}*/

@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 09:29:35 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/21 17:00:57 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/22 09:42:50 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+int		ft_printf(const char *format, ...);
 size_t	ft_putchar(const char c);
 size_t	ft_putstr(const char *str);
 size_t	ft_puthexa_low(unsigned long int x);

@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:00:45 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/21 17:00:48 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/22 09:51:36 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,3 +19,4 @@ size_t	ft_putunbr(const unsigned int n)
 	else
 		return (ft_putchar(n + '0'));
 }
+
