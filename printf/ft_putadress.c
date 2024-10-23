@@ -6,29 +6,38 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:42:04 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/21 11:16:20 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/23 13:24:32 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_putadress(void *p)
+static size_t	printadress(unsigned long n)
 {
-	size_t	count;
-
-	count = 0;
-	write(1, "0x", 2);
-	count = 2;
-	if (p == NULL)
+	if (n / 16)
 	{
-		write (1, "0", 1);
-		count++;
+		return (printadress(n / 16) + printadress(n % 16));
+	}
+	else if (n < 10)
+	{
+		ft_putchar(n + '0');
 	}
 	else
 	{
-		count = count + ft_puthexa_low((unsigned long int)p);
+		ft_putchar(n - 10 + 'a');
 	}
-	return (count);
+	return (1);
+}
+
+size_t	ft_putadress(void *adress)
+{
+	if (!adress)
+	{
+		ft_putstr("0x0");
+		return (3);
+	}
+	ft_putstr("0x");
+	return (2 + printadress((unsigned long)adress));
 }
 
 /* #include <stdio.h>

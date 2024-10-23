@@ -6,34 +6,48 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:47:47 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/18 11:06:32 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/23 13:26:34 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static size_t	count(int nb)
+{
+	size_t	len;
+
+	len = 0;
+	if (nb <= 0)
+		len = 1;
+	while (nb != 0)
+	{
+		nb /= 10;
+		len++;
+	}
+	return (len);
+}
+
 size_t	ft_putnbr(int nb)
 {
+	char	c;
+	size_t	len;
+
+	len = count(nb);
 	if (nb == -2147483648)
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_putnbr(147483648);
+		write(1, "-2147483648", 11);
+		return (11);
 	}
-	else if (nb < 0)
+	if (nb < 0)
 	{
 		ft_putchar('-');
 		nb = -nb;
-		ft_putnbr(nb);
 	}
-	else if (nb > 9)
-	{
+	if (nb >= 10)
 		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-		ft_putchar(nb + 48);
-	return (0);
+	c = (nb % 10) + '0';
+	ft_putchar(c);
+	return (len);
 }
 
 /* int	main(void)

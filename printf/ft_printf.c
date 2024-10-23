@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:25:11 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/23 11:12:35 by emgret           ###   ########.fr       */
+/*   Updated: 2024/10/23 13:24:55 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int	main(void)
 	printf("l'annee derniere tu avais %i ans\n", age2);
 	ft_printf("l'annee derniere tu avais %i ans\n", age2);
 	ft_printf("---------------------\n");
-	printf("l'hexadecimal de h = %x est l'hexadecimal majuscule de h = %X\n", h, h);
-	ft_printf("l'hexadecimal de h = %x est l'hexadecimal majuscule de h = %X\n", h, h);
+	printf("l'hexa de h = %x est l'hexadecimal majuscule de h = %X\n", h, h);
+	ft_printf("l'hexa de h = %x est l'hexadecimal majuscule de h = %X\n", h, h);
 	ft_printf("---------------------\n");
 	printf("le char p = %c\n", p);
 	ft_printf("le char p = %c\n", p);
@@ -103,9 +103,6 @@ int	main(void)
 	printf("%s", "some string with %s hehe\n");
 	ft_printf("%s", "some string with %s hehe\n");
 	ft_printf("---------------------\n");
-	ft_printf(" %s ", "-");
-	ft_printf(" %s %s ", "", "-");
-	ft_printf(" %s %s ", " - ", "");
-	ft_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
+	ft_printf("%d", -10);
 	return (0);
-}*/
+} */
