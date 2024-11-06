@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 18:26:22 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/10 14:54:22 by emgret           ###   ########.fr       */
+/*   Updated: 2024/11/05 12:07:25 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "./printf/ft_printf.h"
 
 typedef struct s_list
 {

@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 17:00:45 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/24 11:40:02 by emgret           ###   ########.fr       */
+/*   Created: 2024/11/05 12:00:41 by emgret            #+#    #+#             */
+/*   Updated: 2024/11/05 12:12:18 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "get_next_line.h"
 
-size_t	ft_putunbr(const unsigned int n)
+char	*get_next_line(int fd)
 {
-	if (n / 10)
-		return (ft_putunbr(n / 10) + ft_putunbr(n % 10));
-	else
-		return (ft_putchar(n + '0'));
+	
 }

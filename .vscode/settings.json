@@ -2,6 +2,7 @@
 	"files.associations": {
 		"stdio.h": "c",
 		"queue": "c",
-		"stack": "c"
+		"stack": "c",
+		"sstream": "c"
 	}
 }
