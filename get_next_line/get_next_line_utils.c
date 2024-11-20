@@ -6,36 +6,37 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:01:18 by emgret            #+#    #+#             */
-/*   Updated: 2024/11/15 14:30:45 by emgret           ###   ########.fr       */
+/*   Updated: 2024/11/20 13:02:22 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
+	size_t	s1_len;
+	size_t	s2_len;
 	size_t	i;
-	size_t	j;
 
-	str = malloc(sizeof(*s1) * ft_strlen((char *)s1)
-			+ ft_strlen((char *)s2) + 1);
+	if (!s2)
+		return (s1);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	str = malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (!str)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i])
+		return (free(s1), NULL);
+	i = -1;
+	if (s1)
 	{
-		str[j++] = s1[i];
-		i++;
+		while (++i < s1_len)
+			str[i] = s1[i];
 	}
-	i = 0;
-	while (s2[i])
-	{
-		str[j++] = s2[i];
-		i++;
-	}
-	str[j] = 0;
+	i = -1;
+	while (++i < s2_len)
+		str[s1_len + i] = s2[i];
+	str[s1_len + s2_len] = '\0';
+	free(s1);
 	return (str);
 }
 
@@ -51,18 +52,18 @@ int	ft_strlen(char	*str)
 
 char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-	char	*ptr;
+	int		i;
 
 	i = 0;
-	ptr = (char *)s;
-	while (ptr[i] != '\0')
+	if (!s)
+		return (NULL);
+	while (s[i])
 	{
-		if (ptr[i] == (char)c)
-			return (&ptr[i]);
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
 		i++;
 	}
 	if ((char)c == '\0')
-		return (&ptr[i]);
+		return ((char *)&s[i]);
 	return (NULL);
 }
