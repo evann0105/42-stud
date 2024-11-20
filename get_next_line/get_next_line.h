@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:00:59 by emgret            #+#    #+#             */
-/*   Updated: 2024/11/15 14:32:42 by emgret           ###   ########.fr       */
+/*   Updated: 2024/11/20 13:24:53 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 int		ft_strlen(char	*str);
 char	*ft_strchr(const char *s, int c);
 

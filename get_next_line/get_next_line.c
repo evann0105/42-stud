@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:00:41 by emgret            #+#    #+#             */
-/*   Updated: 2024/11/15 14:33:39 by emgret           ###   ########.fr       */
+/*   Updated: 2024/11/20 13:35:06 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@ static char	*read_check(char *str)
 	int		i;
 	char	*line;
 
-	i = 0;
-	if (!str || str[0])
+	if (!str || str[0] == '\0')
 		return (NULL);
-	while (str[i] != '\n')
+	i = 0;
+	while (str[i] && str[i] != '\n')
 		i++;
-	if (str[i] == '\n')
-		i++;
-	line = malloc(sizeof(char) * (i + 1));
+	line = malloc(sizeof(char) * (i + 2));
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -48,7 +46,7 @@ static char	*save_reste(char *str)
 	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
-	if (!str[i] || !str[i + 1])
+	if (!str[i] || str[i + 1] == '\0')
 		return (free(str), NULL);
 	reste = malloc(sizeof(char) * (ft_strlen(str) - i));
 	if (!reste)
@@ -56,11 +54,7 @@ static char	*save_reste(char *str)
 	i++;
 	j = 0;
 	while (str[i])
-	{
-		reste[j] = str[i];
-		j++;
-		i++;
-	}
+		reste[j++] = str[i++];
 	reste[j] = '\0';
 	return (free(str), reste);
 }
@@ -75,9 +69,9 @@ char	*get_next_line(int fd)
 	stack = malloc(sizeof(char) * (BUFFERSIZE + 1));
 	if (!stack)
 		return (NULL);
-	nb_byte = 1;
 	if (fd < 0 || BUFFERSIZE <= 0)
-		return (NULL);
+		return (free(stack), NULL);
+	nb_byte = 1;
 	while (!ft_strchr(conca, '\n') && nb_byte != 0)
 	{
 		nb_byte = read(fd, stack, BUFFERSIZE);
@@ -93,3 +87,27 @@ char	*get_next_line(int fd)
 	conca = save_reste(conca);
 	return (put_line);
 }
+
+/* #include <fcntl.h>
+#include <stdio.h>
+
+int	main(void)
+{
+	char	*line;
+	int		fd;
+
+	fd = open("fichier_test.txt", O_RDONLY);
+	if (fd < 0)
+	{
+		perror("Erreur lors de l'ouverture du fichier");
+		return (1);
+	}
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s", line);
+		free(line);
+	}
+	close(fd);
+	return (0);
+} */
+

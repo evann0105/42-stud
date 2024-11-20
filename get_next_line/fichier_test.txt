@@ -1,0 +1,4 @@
+hello
+world
+je test
+get_next_line
