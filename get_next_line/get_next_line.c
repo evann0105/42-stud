@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:00:41 by emgret            #+#    #+#             */
-/*   Updated: 2024/11/20 13:35:06 by emgret           ###   ########.fr       */
+/*   Updated: 2024/11/21 13:03:09 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,15 @@ char	*get_next_line(int fd)
 	char		*put_line;
 	int			nb_byte;
 
-	stack = malloc(sizeof(char) * (BUFFERSIZE + 1));
+	stack = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!stack)
 		return (NULL);
-	if (fd < 0 || BUFFERSIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (free(stack), NULL);
 	nb_byte = 1;
 	while (!ft_strchr(conca, '\n') && nb_byte != 0)
 	{
-		nb_byte = read(fd, stack, BUFFERSIZE);
+		nb_byte = read(fd, stack, BUFFER_SIZE);
 		if (nb_byte == -1)
 			return (free(stack), free(conca), conca = NULL, NULL);
 		stack[nb_byte] = '\0';
@@ -110,4 +110,3 @@ int	main(void)
 	close(fd);
 	return (0);
 } */
-

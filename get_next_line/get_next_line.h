@@ -6,15 +6,15 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:00:59 by emgret            #+#    #+#             */
-/*   Updated: 2024/11/20 13:24:53 by emgret           ###   ########.fr       */
+/*   Updated: 2024/11/21 13:03:03 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# ifndef BUFFERSIZE
-#  define BUFFERSIZE 15
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 15
 # endif
 
 # include <stdlib.h>
