@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:47:47 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/23 13:26:34 by emgret           ###   ########.fr       */
+/*   Updated: 2024/11/22 21:39:39 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static size_t	count(int nb)
 	return (len);
 }
 
-size_t	ft_putnbr(int nb)
+size_t	ft_putnbr_printf(int nb)
 {
 	char	c;
 	size_t	len;

@@ -6,13 +6,13 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:05:33 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/18 10:06:52 by emgret           ###   ########.fr       */
+/*   Updated: 2024/11/22 21:40:00 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen_printf(const char *str)
 {
 	size_t	i;
 

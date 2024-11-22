@@ -6,13 +6,13 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:46:49 by emgret            #+#    #+#             */
-/*   Updated: 2024/10/17 12:55:08 by emgret           ###   ########.fr       */
+/*   Updated: 2024/11/22 21:39:14 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_putchar(const char c)
+size_t	ft_putchar_printf(const char c)
 {
 	return (write(1, &c, 1));
 }
