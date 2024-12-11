@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:50:27 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/10 16:39:26 by emgret           ###   ########.fr       */
+/*   Updated: 2024/12/10 19:04:56 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	validate_lines(int fd, int *first_line_length, t_game *game)
 		free(line);
 		line = get_next_line(fd);
 	}
-	ft_printf("collectible count = %d\n", game->collectible_count);
 }
 
 void	validate_map_file(const char *filename, t_game *game)

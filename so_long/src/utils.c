@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:55:22 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/10 14:46:42 by emgret           ###   ########.fr       */
+/*   Updated: 2024/12/10 19:38:00 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ void	update_counts(char c, t_game *game)
 	else if (c == 'E')
 		game->exit_count++;
 	else if (c == 'C')
-	{
-		ft_printf("collectible add\n");
 		game->collectible_count++;
-	}
 }
 
 void	exit_message(const char *message)

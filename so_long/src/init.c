@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 12:46:54 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/10 16:23:10 by emgret           ###   ########.fr       */
+/*   Updated: 2024/12/10 19:37:35 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_game	*init_game(void)
 	game->player_x = 0;
 	game->player_y = 0;
 	game->moves = 0;
-	ft_printf("init collectible count = %d\n", game->collectible_count);
 	return (game);
 }
 

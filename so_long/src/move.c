@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 12:58:13 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/10 16:02:23 by emgret           ###   ########.fr       */
+/*   Updated: 2024/12/10 19:36:47 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,7 @@ void	move_player(t_game *game, int dx, int dy)
 	}
 	if (game->map[new_y][new_x] == 'C')
 	{
-		ft_printf("collectible before decrementation %d\n",
-			game->collectible_count);
 		game->collectible_count--;
-		ft_printf("collectible after decrementation %d\n",
-			game->collectible_count);
 		game->map[new_y][new_x] = '0';
 	}
 	game->map[game->player_y][game->player_x] = '0';

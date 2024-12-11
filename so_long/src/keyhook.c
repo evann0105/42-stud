@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 12:56:56 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/09 09:36:00 by emgret           ###   ########.fr       */
+/*   Updated: 2024/12/10 19:40:06 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	handle_keypress(int key, t_game *game)
 {
-	ft_printf("Key pressed: %d\n", key);
 	if (key == 53)
 		exit_game(game);
 	if (key == 13 || key == 126)

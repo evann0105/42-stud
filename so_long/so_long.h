@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 11:17:59 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/10 16:35:46 by emgret           ###   ########.fr       */
+/*   Updated: 2024/12/10 19:15:38 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void	find_player_position(t_game *game);
 void	strip_newline(char *line);
 void	update_counts(char c, t_game *counts);
 void	exit_message(const char *message);
+void	refresh_game(t_game *game, int x, int y, int last_x, int last_y);
 
 #endif
