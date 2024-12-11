@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 12:58:13 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/10 19:36:47 by emgret           ###   ########.fr       */
+/*   Updated: 2024/12/11 11:05:36 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	move_player(t_game *game, int dx, int dy)
 
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
+	check_new(game, new_x, new_y);
+}
+
+void	check_new(t_game *game, int new_x, int new_y)
+{
 	if (game->map[new_y][new_x] == '1')
 		return ;
 	if (game->map[new_y][new_x] == 'E')
