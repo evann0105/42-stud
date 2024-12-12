@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 11:17:59 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/11 11:01:53 by emgret           ###   ########.fr       */
+/*   Updated: 2024/12/12 11:41:26 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@ typedef struct s_game
 	void	*exit_img;
 }	t_game;
 
+typedef struct s_flood_data
+{
+	char	**map;
+	int		*collectible_count;
+	int		*exit_count;
+	t_game	*game;
+}	t_flood_data;
+
 void	validate_map_file(const char *filename, t_game *game);
 void	move_player(t_game *game, int dx, int dy);
 void	render_game(t_game *game);
@@ -57,5 +65,7 @@ void	strip_newline(char *line);
 void	update_counts(char c, t_game *counts);
 void	exit_message(const char *message);
 void	check_new(t_game *game, int new_x, int new_y);
+void	check_path_validity(t_game *game);
+
 
 #endif

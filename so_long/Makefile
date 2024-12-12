@@ -6,7 +6,7 @@
 #    By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 21:51:16 by emgret            #+#    #+#              #
-#    Updated: 2024/12/09 14:56:09 by emgret           ###   ########.fr        #
+#    Updated: 2024/12/11 23:17:57 by emgret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC = 	./src/so_long.c \
 		./src/move.c \
 		./src/put_img.c \
 		./src/borders.c \
-		./src/utils.c
+		./src/utils.c \
+		./src/check_path.c
 
 OBJ = $(SRC:.c=.o)
 CC = cc
