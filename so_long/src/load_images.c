@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 13:55:51 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/12 11:29:21 by emgret           ###   ########.fr       */
+/*   Updated: 2024/12/12 20:11:26 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	load_images(t_game *game)
 {
-	int	img_width;
-	int	img_height;
+	int				img_width;
+	int				img_height;
 
 	game->wall_img = mlx_xpm_file_to_image(game->mlx, "assets/wall.xpm",
 			&img_width, &img_height);

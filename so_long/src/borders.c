@@ -6,25 +6,39 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:42:01 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/10 14:47:53 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/04 16:40:46 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	validate_borders(char *line, int line_number, int first_line_length)
+void	strip_newline(char *line)
+{
+	int	length;
+
+	length = ft_strlen(line);
+	while (length > 0 && (line[length - 1] == '\n' || line[length - 1] == '\r'))
+	{
+		line[length - 1] = '\0';
+		length--;
+	}
+}
+
+void	validate_borders(char *line, int line_number, int total_lines,
+	int len)
 {
 	int	i;
 
+	strip_newline(line);
+	if ((int)ft_strlen(line) != len)
+		exit_message("Error:\nmap not surrounded by walls");
 	i = 0;
-	if (line[strlen(line) - 1] == '\n' || line[strlen(line) - 1] == '\r')
-		line[strlen(line) - 1] = '\0';
-	if (line_number == 0 || line_number == first_line_length - 1)
+	if (line_number == 0 || line_number == total_lines - 1)
 	{
 		while (i < ft_strlen(line))
 		{
 			if (line[i] != '1')
-				exit_message("map not surrounded by walls");
+				exit_message("Error:\nmap not surrounded by walls");
 			i++;
 		}
 	}
@@ -32,21 +46,29 @@ void	validate_borders(char *line, int line_number, int first_line_length)
 	{
 		if (line[0] != '1' || line[ft_strlen(line) - 1] != '1')
 		{
-			ft_printf("not surrounded by walls (line %d)\n", line_number);
+			ft_printf("Error:\nmap not surrounded by walls\n",
+				line_number);
 			exit(EXIT_FAILURE);
 		}
 	}
 }
 
-void	strip_newline(char *line)
+/* void	validate_map(char **map, int total_lines)
 {
-	int	length;
+	int	expected_length;
+	int	line_number;
 
-	length = strlen(line);
-	while (length > 0 && (line[length - 1] == '\n' || line[length - 1] == '\r'))
+	if (total_lines == 0)
+		exit_message("Error:\nempty map");
+	expected_length = ft_strlen(map[0]);
+	line_number = 0;
+	while (line_number < total_lines)
 	{
-		line[length - 1] = '\0';
-		length--;
+		validate_borders(map[line_number], line_number, total_lines,
+			expected_length);
+		line_number++;
 	}
-}
+} */
+
+
 

@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 11:17:59 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/12 11:41:26 by emgret           ###   ########.fr       */
+/*   Updated: 2024/12/16 15:26:37 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct s_game
 	int		exit_count;
 	int		collectible_count;
 	int		moves;
-	// Images pour les éléments
 	void	*wall_img;
 	void	*floor_img;
 	void	*player_img;
@@ -59,13 +58,13 @@ void	load_map(t_game *game, const char *filename);
 void	free_map(t_game *game);
 void	load_images(t_game *game);
 void	exit_game(t_game *game);
-void	validate_borders(char *line, int line_number, int first_line_length);
+void	validate_borders(char *line, int line_number, int total_lines, int len);
 void	find_player_position(t_game *game);
 void	strip_newline(char *line);
 void	update_counts(char c, t_game *counts);
 void	exit_message(const char *message);
 void	check_new(t_game *game, int new_x, int new_y);
 void	check_path_validity(t_game *game);
-
+void	render_tile(t_game *game, int x, int y);
 
 #endif
