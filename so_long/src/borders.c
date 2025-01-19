@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:42:01 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/04 16:40:46 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/06 09:57:00 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,3 @@ void	validate_borders(char *line, int line_number, int total_lines,
 		line_number++;
 	}
 } */
-
-
-

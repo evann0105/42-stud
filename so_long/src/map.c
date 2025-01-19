@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:50:27 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/16 15:57:42 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/06 10:16:04 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	validate_characters(char *line, int line_length, t_game *game)
 	{
 		if (line[i] != '1' && line[i] != '0' && line[i] != 'P'
 			&& line[i] != 'C' && line[i] != 'E')
-			exit_message("Error: Invalid character in map");
+			exit_message("Error:\nInvalid character in map");
 		update_counts(line[i], game);
 		i++;
 	}
@@ -58,7 +58,7 @@ void	validate_lines(int fd, int *first_line_length, t_game *game,
 		if (line_number == 0)
 			*first_line_length = line_length;
 		else if (line_length != *first_line_length)
-			exit_message("Error: Map is not rectangular or square");
+			exit_message("Error:\nMap is not rectangular");
 		validate_characters(line, line_length, game);
 		validate_borders(line, line_number, total_lines, *first_line_length);
 		line_number++;
@@ -99,13 +99,13 @@ void	validate_map_file(const char *filename, t_game *game)
 	total_lines = count_total_lines(filename);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		ft_printf("Error: Cannot open map file");
+		ft_printf("Error:\nCannot open map file");
 	validate_lines(fd, &first_line_length, game, total_lines);
 	close(fd);
 	if (game->player_count != 1)
-		exit_message("Error: Map must have exactly one player (P)");
+		exit_message("Error:\nMap must have exactly one player (P)");
 	if (game->exit_count != 1)
-		exit_message("Error: Map must have exactly one exit (E)");
+		exit_message("Error:\nMap must have exactly one exit (E)");
 	if (game->collectible_count < 1)
-		exit_message("Error: Map must have at least one collectible (C)");
+		exit_message("Error:\nMap must have at least one collectible (C)");
 }

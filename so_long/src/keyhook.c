@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 12:56:56 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/10 19:40:06 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/06 09:57:12 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,3 @@ int	handle_keypress(int key, t_game *game)
 		move_player(game, 1, 0);
 	return (0);
 }
-

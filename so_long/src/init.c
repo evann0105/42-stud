@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 12:46:54 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/10 19:37:35 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/06 09:57:08 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@ void	create_window(t_game *game)
 		exit_message("Error\nFailed to create window");
 	}
 }
-

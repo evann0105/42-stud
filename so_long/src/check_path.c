@@ -6,11 +6,13 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:10:19 by emgret            #+#    #+#             */
-/*   Updated: 2024/12/12 11:42:34 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/08 11:52:30 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+#include <stdio.h>
 
 static void	flood_fill_local(t_flood_data *data, int x, int y)
 {
@@ -21,6 +23,8 @@ static void	flood_fill_local(t_flood_data *data, int x, int y)
 		return ;
 	if (data->map[x][y] == 'C')
 		(*data->collectible_count)--;
+	if (data->map[x][y] == 'E' && *data->collectible_count > 0)
+		return ;
 	if (data->map[x][y] == 'E')
 		(*data->exit_count)--;
 	data->map[x][y] = 'F';
@@ -67,11 +71,27 @@ static void	free_map_copy(char **map_copy, int height)
 	free(map_copy);
 }
 
-void	check_path_validity(t_game *game)
+static void	validate_exit_accessibility(t_game *game)
 {
 	char			**map_copy;
-	int				collectible_count;
-	int				exit_count;
+	t_flood_data	data;
+
+	map_copy = copy_map(game);
+	data.map = map_copy;
+	data.collectible_count = &(int){0};
+	data.exit_count = &(game->exit_count);
+	data.game = game;
+	flood_fill_local(&data, game->player_y, game->player_x);
+	free_map_copy(map_copy, game->map_height);
+	if (*(data.exit_count) > 0)
+		exit_message("Error:\nMap is not finishable");
+}
+
+void	check_path_validity(t_game *game)
+{
+	char		**map_copy;
+	int			collectible_count;
+	int			exit_count;
 	t_flood_data	data;
 
 	map_copy = copy_map(game);
@@ -84,6 +104,7 @@ void	check_path_validity(t_game *game)
 	find_player_position(game);
 	flood_fill_local(&data, game->player_y, game->player_x);
 	free_map_copy(map_copy, game->map_height);
-	if (collectible_count > 0 || exit_count > 0)
-		exit_message("Error: Map is not finishable");
+	if (collectible_count > 0)
+		exit_message("Error:\nMap is not finishable");
+	validate_exit_accessibility(game);
 }
