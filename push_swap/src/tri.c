@@ -6,28 +6,70 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 00:03:17 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/15 11:06:32 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/27 20:20:45 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	fonction_test(char **tab, int taille)
+void	sort_three(int *stack, int size)
 {
-	int		i;
-	char	*temp;
+	if (size != 3)
+		return ;
+	if (stack[0] > stack[1] && stack[0] > stack[2])
+		rotate(stack, size);
+	if (stack[1] > stack[0] && stack[1] > stack[2])
+		reverse_rotate(stack, size);
+	if (stack[0] > stack[1])
+		sa_swap(stack, size);
+}
 
-	i = 0;
-	while (i < taille - 1)
+void	sort_five(int *stack_a, int *size_a, int *stack_b, int *size_b)
+{
+	while (*size_a > 3)
 	{
-		if (strcmp(tab[i], tab[i + 1]) > 0)
-		{
-			temp = tab[i + 1];
-			tab[i + 1] = tab[i];
-			tab[i] = temp;
-			i = 0;
-		}
-		else
-			i++;
+		push(stack_a, size_a, stack_b, size_b);
 	}
+	sort_three(stack_a, *size_a);
+	while (*size_b > 0)
+	{
+		push(stack_b, size_b, stack_a, size_a);
+	}
+}
+
+void	radix_sort(int *stack_a, int *size_a, int *stack_b, int *size_b)
+{
+	int	max_num;
+	int	max_bits;
+	int	i;
+	int	count;
+
+	max_num = *size_a;
+	max_bits = 0;
+	i = 0;
+	while ((max_num >> max_bits) != 0)
+		max_bits++;
+	while (i < max_bits)
+	{
+		count = *size_a;
+		while (count--)
+		{
+			if (((stack_a[0] >> i) & 1) == 1)
+				rotate(stack_a, *size_a);
+			else
+				push(stack_a, size_a, stack_b, size_b);
+		}
+		while (*size_b > 0)
+			push(stack_b, size_b, stack_a, size_a);
+		i++;
+	}
+}
+
+void	swap(int *a, int *b)
+{
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }

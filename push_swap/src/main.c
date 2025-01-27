@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 17:36:14 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/18 17:30:23 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/27 20:25:18 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,43 @@
 int	main(int argc, char **argv)
 {
 	int		i;
-	int		j;
-	int		test[argc * 10];
-	char	**split_args;
-	int		k;
+	int		total_args;
+	char	**all_args;
+	int		*test;
+	int		*stack_b;
+	int		size_b;
 
-	i = 1;
-	j = 0;
-	ft_bzero(test, sizeof(test));
-
+	total_args = 0;
 	if (argc > 1)
 	{
+		test = malloc(sizeof(int) * argc * 10);
+		if (!test)
+			exit_mess();
+		stack_b = malloc(sizeof(int) * argc * 10);
+		if (!stack_b)
+		{
+			free(test);
+			exit_mess();
+		}
+		size_b = 0;
+		all_args = initialize_all_args(argc, test);
+		i = 1;
 		while (i < argc)
 		{
-			split_args = ft_split(argv[i], ' ');
-			k = 0;
-			while (split_args[k])
-			{
-				if (is_digit(split_args[k]) == 1)
-				{
-					if (split_args[k][0] == '+' || split_args[k][0] == '0')
-						remove_plus(split_args[k]);
-					if (check_double(split_args[k], test) == 1)
-					{
-						test[j] = ft_atoi(split_args[k]);
-						j++;
-					}
-					else
-					{
-						free_split(split_args);
-						exit_mess();
-					}
-					if (check_min_max(split_args[k]) == 0)
-					{
-						free_split(split_args);
-						exit_mess();
-					}
-				}
-				else
-				{
-					free_split(split_args);
-					exit_mess();
-				}
-				k++;
-			}
-			free_split(split_args);
+			if (argv[i][0] == ' ' && (argv[i][1] < '0' || argv[i][1] > '9'))
+				exit_mess();
+			if (proc_argument(argv[i], all_args, test, &total_args) == 0)
+				return (0);
 			i++;
 		}
+		if (total_args <= 3)
+			sort_three(test, total_args);
+		else if (total_args == 4 || total_args == 5)
+			sort_five(test, &total_args, stack_b, &size_b);
+		else
+			radix_sort(test, &total_args, stack_b, &size_b);
+		free_all(all_args, total_args);
+		free(test);
 	}
 	return (0);
 }

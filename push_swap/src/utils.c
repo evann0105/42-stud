@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 12:16:56 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/18 17:27:34 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/23 14:07:30 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,8 @@ void	free_split(char **split)
 	free(split);
 }
 
-//gerer le ""
-//
+void	exit_mess(void)
+{
+	ft_printf("Error\n");
+	exit(0);
+}

@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:07:54 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/18 16:45:36 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/23 13:59:38 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,4 @@ int	check_min_max(char *argv)
 	return (1);
 }
 
-void	exit_mess(void)
-{
-	ft_printf("Error\n");
-	exit(0);
-}
+
