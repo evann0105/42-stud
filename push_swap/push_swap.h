@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 18:24:30 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/27 20:18:53 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/28 18:45:34 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		check_double(char *argv, int *test);
 int		is_digit(char *tab);
 void	remove_plus(char *str);
 int		check_min_max(char *argv);
+int		check_multiple_spaces(const char *str);
 void	exit_mess(void);
 void	free_split(char **split);
 
@@ -50,5 +51,6 @@ void	double_operation(void (*op)(int *, int), int *stack_a, int size_a,
 void	radix_sort(int *stack_a, int *size_a, int *stack_b, int *size_b);
 void	sort_five(int *stack_a, int *size_a, int *stack_b, int *size_b);
 void	sort_three(int *stack, int size);
+void	to_sort(int total_args, int *test, char	**all_args, int argc);
 
 #endif

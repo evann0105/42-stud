@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:07:54 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/23 13:59:38 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/28 18:45:17 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,16 @@ int	check_min_max(char *argv)
 	return (1);
 }
 
+int	check_multiple_spaces(const char *str)
+{
+	int	i;
 
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ' ' && str[i + 1] == ' ')
+			return (0);
+		i++;
+	}
+	return (1);
+}

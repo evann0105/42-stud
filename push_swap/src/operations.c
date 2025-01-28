@@ -16,8 +16,10 @@
 void	sa_swap(int *stack, int size)
 {
 	if (size > 1)
+	{
 		swap(&stack[0], &stack[1]);
-	ft_printf("sa\n");
+		ft_printf("sa\n");
+	}
 }
 
 void	push(int *src, int *src_size, int *dest, int *dest_size)

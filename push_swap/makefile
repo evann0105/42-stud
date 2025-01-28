@@ -6,7 +6,7 @@
 #    By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/12 17:36:00 by emgret            #+#    #+#              #
-#    Updated: 2025/01/27 20:18:33 by emgret           ###   ########.fr        #
+#    Updated: 2025/01/28 17:52:05 by emgret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ SRC = 	./src/main.c \
 		./src/error.c \
 		./src/utils.c \
 		./src/utils_again.c \
-		./src/operations.c
+		./src/operations.c \
+		./src/to_sort.c
 
 OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror

@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 00:03:17 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/27 20:20:45 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/28 18:20:40 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 void	sort_three(int *stack, int size)
 {
-	if (size != 3)
+	if (size == 2)
+	{
+		if (stack[0] > stack[1])
+			sa_swap(stack, size);
+		return ;
+	}
+	else if (size != 3)
 		return ;
 	if (stack[0] > stack[1] && stack[0] > stack[2])
 		rotate(stack, size);

@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 17:36:14 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/27 20:25:18 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/28 18:14:11 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	main(int argc, char **argv)
 	int		total_args;
 	char	**all_args;
 	int		*test;
-	int		*stack_b;
-	int		size_b;
 
 	total_args = 0;
 	if (argc > 1)
@@ -27,13 +25,6 @@ int	main(int argc, char **argv)
 		test = malloc(sizeof(int) * argc * 10);
 		if (!test)
 			exit_mess();
-		stack_b = malloc(sizeof(int) * argc * 10);
-		if (!stack_b)
-		{
-			free(test);
-			exit_mess();
-		}
-		size_b = 0;
 		all_args = initialize_all_args(argc, test);
 		i = 1;
 		while (i < argc)
@@ -44,14 +35,7 @@ int	main(int argc, char **argv)
 				return (0);
 			i++;
 		}
-		if (total_args <= 3)
-			sort_three(test, total_args);
-		else if (total_args == 4 || total_args == 5)
-			sort_five(test, &total_args, stack_b, &size_b);
-		else
-			radix_sort(test, &total_args, stack_b, &size_b);
-		free_all(all_args, total_args);
-		free(test);
+		to_sort(total_args, test, all_args, argc);
 	}
 	return (0);
 }

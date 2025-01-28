@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:30:47 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/27 20:04:02 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/28 18:46:25 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	proc_argument(char *arg, char **all_args, int *test, int *total_args)
 	int		k;
 
 	k = 0;
+	if (!check_multiple_spaces(arg))
+		exit_mess();
 	split_args = ft_split(arg, ' ');
 	while (split_args[k])
 	{
@@ -52,6 +54,8 @@ int	proc_argument(char *arg, char **all_args, int *test, int *total_args)
 
 int	is_valid_argument(char *arg, int *test)
 {
+	if (!arg || ft_strlen(arg) == 0)
+		exit_mess();
 	if (is_digit(arg) == 1)
 	{
 		if (arg[0] == '+' || arg[0] == '0')
