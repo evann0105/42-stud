@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 13:35:13 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/18 13:44:55 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/31 14:35:41 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ long long	ft_atoi_s(const char *str)
 
 	result = 0;
 	sign = 1;
-	while (*str == ' ' || *str == '\t' || *str == '\n'
-		|| *str == '\v' || *str == '\f' || *str == '\r')
-		str++;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+    	str++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
@@ -35,8 +34,9 @@ long long	ft_atoi_s(const char *str)
 			return ((long long)2147483647 + 1);
 		if (result * sign < -2147483648)
 			return ((long long)-2147483648 - 1);
-
 		str++;
 	}
+	if (*str != '\0')
+		return (0);
 	return (result * sign);
 }

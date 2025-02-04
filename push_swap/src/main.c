@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 17:36:14 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/28 18:14:11 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/03 09:52:45 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	total_args = 0;
 	if (argc > 1)
 	{
-		test = malloc(sizeof(int) * argc * 10);
+		test = malloc(sizeof(int) * (argc - 1));
 		if (!test)
 			exit_mess();
 		all_args = initialize_all_args(argc, test);
@@ -36,6 +36,13 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		to_sort(total_args, test, all_args, argc);
+		i = 0;
+		while (i < total_args)
+		{
+			printf("%d ", test[i]);
+			i++;
+		}
+		printf("\n");
 	}
 	return (0);
 }

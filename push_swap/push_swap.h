@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 18:24:30 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/28 18:45:34 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/04 17:08:31 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,23 @@ int		is_valid_argument(char *arg, int *test);
 int		add_argument(char *arg, char **all_args, int *test, int *total_args);
 void	free_all(char **all_args, int total_args);
 
-void	sa_swap(int *stack, int size);
-void	push(int *src, int *src_size, int *dest, int *dest_size);
+void	sa(int *stack, int size);
+void	sb(int *stack, int size);
+void	ss(int *stack_a, int size_a, int *stack_b, int size_b);
 void	rotate(int *stack, int size);
 void	reverse_rotate(int *stack, int size);
-void	double_operation(void (*op)(int *, int), int *stack_a, int size_a,
-			int *stack_b, int size_b);
-
-void	sa_swap(int *stack, int size);
-void	push(int *src, int *src_size, int *dest, int *dest_size);
-void	rotate(int *stack, int size);
-void	reverse_rotate(int *stack, int size);
-void	double_operation(void (*op)(int *, int), int *stack_a, int size_a,
-						int *stack_b, int size_b);
-void	radix_sort(int *stack_a, int *size_a, int *stack_b, int *size_b);
-void	sort_five(int *stack_a, int *size_a, int *stack_b, int *size_b);
 void	sort_three(int *stack, int size);
+void	sort_five(int *stack_a, int *size_a, int *stack_b, int *size_b);
+void	radix_sort(int *stack_a, int *size_a, int *stack_b, int *size_b);
 void	to_sort(int total_args, int *test, char	**all_args, int argc);
+
+void	ra(int *stack_a, int size_a);
+void	rb(int *stack_b, int size_b);
+void	rr(int *stack_a, int size_a, int *stack_b, int size_b);
+void	rra(int *stack_a, int size_a);
+void	rrb(int *stack_b, int size_b);
+void	rrr(int *stack_a, int size_a, int *stack_b, int size_b);
+void	pb(int *stack_a, int *size_a, int *stack_b, int *size_b);
+void	pa(int *stack_a, int *size_a, int *stack_b, int *size_b);
 
 #endif

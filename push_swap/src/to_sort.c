@@ -6,30 +6,34 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:46:47 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/28 18:20:18 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/04 17:07:30 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	to_sort(int total_args, int *test, char	**all_args, int argc)
+void	to_sort(int total_args, int *stack_a, char **all_args, int argc)
 {
-	int		*stack_b;
-	int		size_b;
+	int	*stack_b;
+	int	size_b;
+	int	size_a;
 
-	stack_b = malloc(sizeof(int) * argc * 10);
+	stack_b = malloc(sizeof(int) * (argc - 1));
 	if (!stack_b)
 	{
-		free(test);
+		free(stack_a);
 		exit_mess();
 	}
 	size_b = 0;
-	if (total_args <= 3)
-		sort_three(test, total_args);
+	size_a = total_args;
+	if (total_args == 2 && stack_a[0] > stack_a[1])
+		sa(stack_a, size_a);
+	else if (total_args == 3)
+		sort_three(stack_a, total_args);
 	else if (total_args == 4 || total_args == 5)
-		sort_five(test, &total_args, stack_b, &size_b);
+		sort_five(stack_a, &size_a, stack_b, &size_b);
 	else
-		radix_sort(test, &total_args, stack_b, &size_b);
+		radix_sort(stack_a, &size_a, stack_b, &size_b);
 	free_all(all_args, total_args);
-	free(test);
+	free(stack_b);
 }

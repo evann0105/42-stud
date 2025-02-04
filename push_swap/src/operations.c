@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,13 +6,22 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:10:24 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/27 15:10:24 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/04 16:26:56 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	sa_swap(int *stack, int size)
+void	swap(int *a, int *b)
+{
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void	sa(int *stack, int size)
 {
 	if (size > 1)
 	{
@@ -22,29 +30,23 @@ void	sa_swap(int *stack, int size)
 	}
 }
 
-void	push(int *src, int *src_size, int *dest, int *dest_size)
+void	sb(int *stack, int size)
 {
-	int	i;
+    if (size > 1)
+    {
+        swap(&stack[0], &stack[1]);
+        printf("sb\n");
+    }
+}
 
-	i = *dest_size;
-	if (*src_size > 0)
-	{
-		while (i > 0)
-		{
-			dest[i] = dest[i - 1];
-			i--;
-		}
-		dest[0] = src[0];
-		(*dest_size)++;
-		i = 0;
-		while (i < *src_size - 1)
-		{
-			src[i] = src[i + 1];
-			i++;
-		}
-		(*src_size)--;
-		ft_printf("pb\n");
-	}
+void	ss(int *stack_a, int size_a, int *stack_b, int size_b)
+{
+    if (size_a > 1 && size_b > 1)
+    {
+        swap(&stack_a[0], &stack_a[1]);
+        swap(&stack_b[0], &stack_b[1]);
+        printf("ss\n");
+    }
 }
 
 void	rotate(int *stack, int size)
@@ -52,48 +54,105 @@ void	rotate(int *stack, int size)
 	int	temp;
 	int	i;
 
-	i = 0;
 	if (size > 1)
 	{
 		temp = stack[0];
-		while (i < size - 1)
-		{
+		for (i = 0; i < size - 1; i++) {
 			stack[i] = stack[i + 1];
-			i++;
 		}
 		stack[size - 1] = temp;
-		ft_printf("ra\n");
 	}
 }
 
 void	reverse_rotate(int *stack, int size)
 {
-	int	i;
 	int	temp;
+	int	i;
 
-	i = size - 1;
 	if (size > 1)
 	{
 		temp = stack[size - 1];
-		while (i > 0)
+		for (i = size - 1; i > 0; i--)
 		{
 			stack[i] = stack[i - 1];
-			i--;
 		}
 		stack[0] = temp;
-		ft_printf("rra\n");
 	}
 }
 
-void	double_operation(void (*op)(int *, int), int *stack_a, int size_a,
-						int *stack_b, int size_b)
+void	ra(int *stack_a, int size_a)
 {
-	op(stack_a, size_a);
-	op(stack_b, size_b);
-	if (op == rotate)
-		ft_printf("rr");
-	else if (op == reverse_rotate)
-		ft_printf("rrr");
-	else if (op == sa_swap)
-		ft_printf("ss");
+	rotate(stack_a, size_a);
+	printf("ra\n");
 }
+
+void	rb(int *stack_b, int size_b)
+{
+	rotate(stack_b, size_b);
+	printf("rb\n");
+}
+
+void	rr(int *stack_a, int size_a, int *stack_b, int size_b)
+{
+	rotate(stack_a, size_a);
+	rotate(stack_b, size_b);
+	printf("rr\n");
+}
+
+void	rra(int *stack_a, int size_a)
+{
+	reverse_rotate(stack_a, size_a);
+	printf("rra\n");
+}
+
+void	rrb(int *stack_b, int size_b)
+{
+	reverse_rotate(stack_b, size_b);
+	printf("rrb\n");
+}
+
+void	rrr(int *stack_a, int size_a, int *stack_b, int size_b)
+{
+	reverse_rotate(stack_a, size_a);
+	reverse_rotate(stack_b, size_b);
+	printf("rrr\n");
+}
+
+void pb(int *stack_a, int *size_a, int *stack_b, int *size_b)
+{
+	if (*size_a > 0)
+	{
+		for (int i = *size_b; i > 0; i--)
+			stack_b[i] = stack_b[i - 1];
+
+		stack_b[0] = stack_a[0];
+
+		for (int i = 0; i < *size_a - 1; i++)
+			stack_a[i] = stack_a[i + 1];
+
+		(*size_b)++;
+		(*size_a)--;
+
+		printf("pb\n");
+	}
+}
+
+void pa(int *stack_a, int *size_a, int *stack_b, int *size_b)
+{
+	if (*size_b > 0)
+	{
+		for (int i = *size_a; i > 0; i--)
+			stack_a[i] = stack_a[i - 1];
+
+		stack_a[0] = stack_b[0];
+
+		for (int i = 0; i < *size_b - 1; i++)
+			stack_b[i] = stack_b[i + 1];
+
+		(*size_a)++;
+		(*size_b)--;
+
+		printf("pa\n");
+	}
+}
+

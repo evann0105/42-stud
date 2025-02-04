@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:30:47 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/28 18:46:25 by emgret           ###   ########.fr       */
+/*   Updated: 2025/01/31 14:36:15 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	add_argument(char *arg, char **all_args, int *test, int *total_args)
 {
 	if (check_double(arg, test) == 1)
 	{
-		test[*total_args] = ft_atoi(arg);
+		test[*total_args] = ft_atoi_s(arg);
 		all_args[*total_args] = ft_strdup(arg);
 		(*total_args)++;
 		return (1);
