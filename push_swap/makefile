@@ -6,7 +6,7 @@
 #    By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/12 17:36:00 by emgret            #+#    #+#              #
-#    Updated: 2025/02/04 17:04:29 by emgret           ###   ########.fr        #
+#    Updated: 2025/02/05 14:00:21 by emgret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRC = 	./src/main.c \
 		./src/operations.c \
 		./src/to_sort.c \
 		./src/sort_for_five.c \
-		./src/sort_three.c
+		./src/sort_three.c \
+		./src/others_op.c \
+		./src/last_operation.c
 
 
 OBJ = $(SRC:.c=.o)

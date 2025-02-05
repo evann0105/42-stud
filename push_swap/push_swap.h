@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 18:24:30 by emgret            #+#    #+#             */
-/*   Updated: 2025/02/04 17:08:31 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/05 13:51:10 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ int		is_valid_argument(char *arg, int *test);
 int		add_argument(char *arg, char **all_args, int *test, int *total_args);
 void	free_all(char **all_args, int total_args);
 
-void	sa(int *stack, int size);
-void	sb(int *stack, int size);
-void	ss(int *stack_a, int size_a, int *stack_b, int size_b);
 void	rotate(int *stack, int size);
 void	reverse_rotate(int *stack, int size);
 void	sort_three(int *stack, int size);
@@ -45,6 +42,9 @@ void	sort_five(int *stack_a, int *size_a, int *stack_b, int *size_b);
 void	radix_sort(int *stack_a, int *size_a, int *stack_b, int *size_b);
 void	to_sort(int total_args, int *test, char	**all_args, int argc);
 
+void	sa(int *stack, int size);
+void	sb(int *stack, int size);
+void	ss(int *stack_a, int size_a, int *stack_b, int size_b);
 void	ra(int *stack_a, int size_a);
 void	rb(int *stack_b, int size_b);
 void	rr(int *stack_a, int size_a, int *stack_b, int size_b);

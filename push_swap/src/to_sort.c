@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:46:47 by emgret            #+#    #+#             */
-/*   Updated: 2025/02/04 17:07:30 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/05 13:51:32 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,4 @@ void	to_sort(int total_args, int *stack_a, char **all_args, int argc)
 	free_all(all_args, total_args);
 	free(stack_b);
 }
+
