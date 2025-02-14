@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 13:35:13 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/31 14:35:41 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/14 12:49:37 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ long long	ft_atoi_s(const char *str)
 	result = 0;
 	sign = 1;
 	while ((*str >= 9 && *str <= 13) || *str == 32)
-    	str++;
+		str++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')

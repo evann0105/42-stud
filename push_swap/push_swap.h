@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 18:24:30 by emgret            #+#    #+#             */
-/*   Updated: 2025/02/05 13:51:10 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/13 13:20:16 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		check_min_max(char *argv);
 int		check_multiple_spaces(const char *str);
 void	exit_mess(void);
 void	free_split(char **split);
+int		is_sorted(int *stack, int size);
 
 void	swap(int *a, int *b);
 

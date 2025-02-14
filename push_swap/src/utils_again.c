@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:30:47 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/31 14:36:15 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/14 13:14:30 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,26 @@ int	proc_argument(char *arg, char **all_args, int *test, int *total_args)
 	int		k;
 
 	k = 0;
-	if (!check_multiple_spaces(arg))
-		exit_mess();
 	split_args = ft_split(arg, ' ');
 	while (split_args[k])
 	{
+		if (ft_strlen(split_args[k]) == 0)
+		{
+			k++;
+			continue ;
+		}
 		if (!is_valid_argument(split_args[k], test))
 		{
 			free_split(split_args);
-			free(all_args);
+			if (all_args != NULL)
+				free(all_args);
 			exit_mess();
 		}
 		if (add_argument(split_args[k], all_args, test, total_args) == 0)
 		{
 			free_split(split_args);
-			free(all_args);
+			if (all_args != NULL)
+				free(all_args);
 			exit_mess();
 		}
 		k++;
@@ -72,6 +77,12 @@ int	add_argument(char *arg, char **all_args, int *test, int *total_args)
 	{
 		test[*total_args] = ft_atoi_s(arg);
 		all_args[*total_args] = ft_strdup(arg);
+		all_args[*total_args] = ft_strdup(arg);
+		if (!all_args[*total_args])
+		{
+			printf("all_args[%d] n'a pas été alloué correct!\n", *total_args);
+			exit(1);
+		}
 		(*total_args)++;
 		return (1);
 	}
@@ -89,7 +100,7 @@ void	free_all(char **all_args, int total_args)
 		{
 			if (all_args[i] != NULL)
 			{
-				free(all_args[i]);
+				free(all_args[i]);  
 				all_args[i] = NULL;
 			}
 			i++;

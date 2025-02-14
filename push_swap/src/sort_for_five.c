@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:13:57 by emgret            #+#    #+#             */
-/*   Updated: 2025/02/04 16:31:18 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/14 13:14:07 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,3 @@ void	sort_five(int *stack_a, int *size_a, int *stack_b, int *size_b)
 	if (*size_b > 0)
 		pa(stack_a, size_a, stack_b, size_b);
 }
-

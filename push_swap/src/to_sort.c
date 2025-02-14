@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:46:47 by emgret            #+#    #+#             */
-/*   Updated: 2025/02/05 13:51:32 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/13 12:33:49 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	to_sort(int total_args, int *stack_a, char **all_args, int argc)
 		free(stack_a);
 		exit_mess();
 	}
+	if (is_sorted(stack_a, total_args))
+		return (free_all(all_args, total_args), free(stack_b));
 	size_b = 0;
 	size_a = total_args;
 	if (total_args == 2 && stack_a[0] > stack_a[1])
