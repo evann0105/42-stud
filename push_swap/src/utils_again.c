@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:30:47 by emgret            #+#    #+#             */
-/*   Updated: 2025/02/14 13:14:30 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/14 13:32:24 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ int	proc_argument(char *arg, char **all_args, int *test, int *total_args)
 	split_args = ft_split(arg, ' ');
 	while (split_args[k])
 	{
-		if (ft_strlen(split_args[k]) == 0)
-		{
-			k++;
-			continue ;
-		}
 		if (!is_valid_argument(split_args[k], test))
 		{
 			free_split(split_args);
@@ -100,7 +95,7 @@ void	free_all(char **all_args, int total_args)
 		{
 			if (all_args[i] != NULL)
 			{
-				free(all_args[i]);  
+				free(all_args[i]);
 				all_args[i] = NULL;
 			}
 			i++;
