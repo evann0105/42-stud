@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 18:26:22 by emgret            #+#    #+#             */
-/*   Updated: 2025/01/31 14:35:55 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/17 17:10:51 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 # include <stdarg.h>
 # include <string.h>
 
@@ -91,5 +92,7 @@ size_t		ft_putnbr_printf(int nb);
 size_t		ft_putadress_printf(void *p);
 size_t		ft_strlen_printf(const char *str);
 size_t		ft_putunbr_printf(const unsigned int n);
+
+char		*ft_strtok(char *str, const char *delim);
 
 #endif

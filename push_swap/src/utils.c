@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 12:16:56 by emgret            #+#    #+#             */
-/*   Updated: 2025/02/10 10:35:12 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/18 23:25:17 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	is_digit(char *tab)
 	int		response;
 
 	i = 0;
+	response = 1;
 	while (tab[i])
 	{
 		read = tab[i];
@@ -60,6 +61,8 @@ void	remove_plus(char *str)
 {
 	int	i;
 
+	if (str == NULL || str[0] == '\0')
+		return ;
 	if (str[0] == '+' && str[1] == '\0')
 		exit_mess();
 	if (str[0] == '+')
@@ -88,8 +91,17 @@ void	free_split(char **split)
 	free(split);
 }
 
-void	exit_mess(void)
+int	process_single_arg(char *arg, char **all_args, int *test, int *t_args)
 {
-	ft_printf("Error\n");
-	exit(0);
+	if (!is_valid_argument(arg, test, t_args))
+	{
+		exit_mess();
+		return (0);
+	}
+	if (add_argument(arg, all_args, test, t_args) == 0)
+	{
+		exit_mess();
+		return (0);
+	}
+	return (1);
 }

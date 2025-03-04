@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:58:10 by emgret            #+#    #+#             */
-/*   Updated: 2025/02/14 13:13:58 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/18 23:24:26 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,22 @@
 void	rrb(int *stack_b, int size_b)
 {
 	reverse_rotate(stack_b, size_b);
-	printf("rrb\n");
+	ft_printf("rrb\n");
 }
 
 void	rrr(int *stack_a, int size_a, int *stack_b, int size_b)
 {
 	reverse_rotate(stack_a, size_a);
 	reverse_rotate(stack_b, size_b);
-	printf("rrr\n");
+	ft_printf("rrr\n");
 }
 
 void	pb(int *stack_a, int *size_a, int *stack_b, int *size_b)
 {
 	int	i;
 
+	if (*size_a <= 0)
+		return ;
 	if (*size_a > 0)
 	{
 		i = *size_b;
@@ -46,7 +48,7 @@ void	pb(int *stack_a, int *size_a, int *stack_b, int *size_b)
 		}
 		(*size_b)++;
 		(*size_a)--;
-		printf("pb\n");
+		ft_printf("pb\n");
 	}
 }
 
@@ -54,6 +56,8 @@ void	pa(int *stack_a, int *size_a, int *stack_b, int *size_b)
 {
 	int	i;
 
+	if (*size_b <= 0)
+		return ;
 	if (*size_b > 0)
 	{
 		i = *size_a;
@@ -71,6 +75,6 @@ void	pa(int *stack_a, int *size_a, int *stack_b, int *size_b)
 		}
 		(*size_a)++;
 		(*size_b)--;
-		printf("pa\n");
+		ft_printf("pa\n");
 	}
 }

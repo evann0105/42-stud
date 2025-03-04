@@ -6,7 +6,7 @@
 #    By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 00:06:44 by emgret            #+#    #+#              #
-#    Updated: 2025/01/18 13:48:12 by emgret           ###   ########.fr        #
+#    Updated: 2025/02/17 17:11:07 by emgret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,8 @@ SRC = 	ft_strlen.c \
 		ft_lstclear.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
-		ft_atoi_max_min.c
+		ft_atoi_max_min.c \
+		ft_strtok.c
 
 
 OBJ = $(SRC:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 00:03:17 by emgret            #+#    #+#             */
-/*   Updated: 2025/02/14 12:38:29 by emgret           ###   ########.fr       */
+/*   Updated: 2025/02/19 13:17:33 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,15 @@ static int	get_max_bits(int *stack, int size)
 
 static void	normalize_values(int *stack, int size)
 {
-	int	min;
-	int	i;
+	int	*sorted;
 
-	min = stack[0];
-	i = 1;
-	while (i < size)
-	{
-		if (stack[i] < min)
-			min = stack[i];
-		i++;
-	}
-	if (min < 0)
-	{
-		i = 0;
-		while (i < size)
-		{
-			stack[i] -= min;
-			i++;
-		}
-	}
+	sorted = malloc(size * sizeof(int));
+	if (!sorted)
+		return ;
+	copy_stack(sorted, stack, size);
+	my_qsort(sorted, size);
+	replace_with_indices(stack, sorted, size);
+	free(sorted);
 }
 
 static void	denormalize_values(int *stack, int size, int min)
@@ -73,27 +62,22 @@ static void	denormalize_values(int *stack, int size, int min)
 
 static void	radix_pass(int *stack_a, int *size_a, int *stack_b, int *size_b)
 {
-	int	i;
-	int	j;
-	int	size;
-	int	max_bits;
+	int		i;
+	int		max_bits;
+	t_stack	sa;
+	t_stack	sb;
 
+	sa.stack = stack_a;
+	sa.size = size_a;
+	sa.moves = 0;
+	sb.stack = stack_b;
+	sb.size = size_b;
+	sb.moves = 0;
 	max_bits = get_max_bits(stack_a, *size_a);
 	i = 0;
 	while (i < max_bits)
 	{
-		j = 0;
-		size = *size_a;
-		while (j < size)
-		{
-			if ((stack_a[0] >> i) & 1)
-				ra(stack_a, *size_a);
-			else
-				pb(stack_a, size_a, stack_b, size_b);
-			j++;
-		}
-		while (*size_b > 0)
-			pa(stack_a, size_a, stack_b, size_b);
+		process_bit_pass(&sa, &sb, i);
 		i++;
 	}
 }

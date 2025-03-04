@@ -6,7 +6,7 @@
 #    By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/12 17:36:00 by emgret            #+#    #+#              #
-#    Updated: 2025/02/05 14:00:21 by emgret           ###   ########.fr        #
+#    Updated: 2025/02/19 12:58:05 by emgret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ SRC = 	./src/main.c \
 		./src/sort_for_five.c \
 		./src/sort_three.c \
 		./src/others_op.c \
-		./src/last_operation.c
+		./src/last_operation.c \
+		./src/qsort.c \
+		./src/need_radix.c
 
 
 OBJ = $(SRC:.c=.o)
@@ -33,9 +35,9 @@ LIBFT_LIB = $(LIBFT_PATH)libft.a
 
 NAME = push_swap
 
-RED=\x1b[31m'
-RESET=\033[o
-BLUE = \x1b[36m
+RED=\x1b[31m
+RESET=\033[0m
+BLUE=\x1b[36m
 
 MESSAGE_ALL = "all files are compiled"
 MESSAGE_C = "all files are clean"
