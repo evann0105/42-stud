@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:26:16 by emgret            #+#    #+#             */
-/*   Updated: 2025/03/03 13:22:52 by emgret           ###   ########.fr       */
+/*   Updated: 2025/04/01 09:58:47 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ char	*find_cmd_path(char *cmd, char **envp)
 {
 	t_find	find;
 
+	if (ft_strchr(cmd, '/'))
+	{
+		if (access(cmd, X_OK) == 0)
+			return (ft_strdup(cmd));
+		else
+			return (NULL);
+	}
 	find.path_env = get_path_env(envp);
 	if (!find.path_env)
 		return (NULL);
@@ -40,11 +47,11 @@ char	*find_cmd_path(char *cmd, char **envp)
 	return (free_tab(find.paths), NULL);
 }
 
+
 char	*get_path_env(char **envp)
 {
-	int	i;
+	int	i = 0;
 
-	i = 0;
 	while (envp[i])
 	{
 		if (strncmp(envp[i], "PATH=", 5) == 0)

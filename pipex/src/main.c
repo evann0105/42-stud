@@ -6,7 +6,7 @@
 /*   By: emgret <emegret@student.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:25:33 by emgret            #+#    #+#             */
-/*   Updated: 2025/03/02 11:56:34 by emgret           ###   ########.fr       */
+/*   Updated: 2025/04/01 10:19:54 by emgret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	exec_child_cmd1(t_stack *stack, char **envp)
 	close(stack->file2_fd);
 	close(stack->pipe_fd[0]);
 	close(stack->pipe_fd[1]);
-	args1 = ft_split(stack->cmd1, ' ');
+	args1 = smart_split(stack->cmd1);
 	if (!args1)
 		exit_mess("Erreur d'allocation args1");
 	path_cmd1 = find_cmd_path(args1[0], envp);
@@ -65,7 +65,7 @@ static void	exec_child_cmd2(t_stack *stack, char **envp)
 	close(stack->file2_fd);
 	close(stack->pipe_fd[0]);
 	close(stack->pipe_fd[1]);
-	args = ft_split(stack->cmd2, ' ');
+	args = smart_split(stack->cmd2);
 	if (!args)
 	{
 		perror("Erreur d'allocation args");
